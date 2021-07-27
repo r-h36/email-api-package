@@ -1,0 +1,32 @@
+{
+    "name": "r-h36/email-api-package",
+    "description": "A collection of email api endpoint for multiple platforms",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rh36\\EmailApiPackage\\": "src",
+            "Rh36\\EmailApiPackage\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rh36\\EmailApiPackage\\Providers\\EmailApiPackageServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "r-h36",
+            "email": "lh.ray106@gmail.com"
+        }
+    ],
+    "require": {
+        "prettus/l5-repository": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.0"
+    }
+}
