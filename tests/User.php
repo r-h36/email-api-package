@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Rh36\EmailApiPackage\Models\EmailTemplate;
+use Rh36\EmailApiPackage\Models\EmailLog;
 
 class User extends Model implements AuthorizableContract, AuthenticatableContract
 {
@@ -26,5 +27,10 @@ class User extends Model implements AuthorizableContract, AuthenticatableContrac
     public function emailTemplates()
     {
         return $this->hasMany(EmailTemplate::class);
+    }
+
+    public function emailLogs()
+    {
+        return $this->hasMany(EmailLog::class);
     }
 }

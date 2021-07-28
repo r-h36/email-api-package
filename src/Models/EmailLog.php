@@ -11,4 +11,19 @@ class EmailLog extends Model
 
     // Disable Laravel's mass assignment protection
     protected $guarded = [];
+
+    protected static function newFactory()
+    {
+        return \Rh36\EmailApiPackage\Database\Factories\EmailLogFactory::new();
+    }
+
+    public function emailTemplate()
+    {
+        return $this->belongsTo(EmailTemplate::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(config('auth.providers.users.model'));
+    }
 }
