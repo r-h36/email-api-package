@@ -6,8 +6,14 @@
     "autoload": {
         "psr-4": {
             "Rh36\\EmailApiPackage\\": "src",
-            "Rh36\\EmailApiPackage\\Tests\\": "tests"
+            "Rh36\\EmailApiPackage\\Tests\\": "tests",
+            "Rh36\\EmailApiPackage\\Database\\Factories\\": "database/factories"
         }
+    },
+    "autoload-dev": {},
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
     },
     "extra": {
         "laravel": {

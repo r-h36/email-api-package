@@ -22,6 +22,12 @@ class BaseTestCase extends OrchestraTestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        // perform environment setup
+        // import the CreateEmailTemplateTable class from the migration
+        include_once __DIR__ . '/../../database/migrations/create_users_table.php.stub';
+        include_once __DIR__ . '/../../database/migrations/create_email_templates_table.php.stub';
+
+        // run the up() method of that migration class
+        (new \CreateUsersTable)->up();
+        (new \CreateEmailTemplatesTable)->up();
     }
 }
