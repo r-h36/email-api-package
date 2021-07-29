@@ -85,13 +85,13 @@ class EmailLogTest extends BaseTestCase
             'to' => 'thisisto@yahoo.com',
         ]);
 
-        tap($user->emailLogs()->first(), function ($emailLog) use ($user, $firstTemplate) {
+        tap($user->emailLogs()->first(), function ($emailLog) use ($firstTemplate) {
             $this->assertEquals('Third email subject', $emailLog->subject);
             $this->assertEquals($firstTemplate->id, $emailLog->template_id);
             $this->assertEquals(json_encode(['planet' => 'Sanctum']), $emailLog->template_data);
             $this->assertEquals(1, $emailLog->use_template);
             $this->assertNull($emailLog->plain_content);
-            $this->assertTrue($emailLog->user->is($user));
+            $this->assertTrue($emailLog->template->is($firstTemplate));
         });
     }
 }

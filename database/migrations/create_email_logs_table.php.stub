@@ -38,8 +38,11 @@ class CreateEmailLogsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('template_id')->references('id')->on('email_templates');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('template_id')->references('id')->on('email_templates')
+                ->onUpdate('cascade')->onDelete('set null');
         });
     }
 

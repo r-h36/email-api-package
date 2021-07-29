@@ -29,7 +29,10 @@
         }
     ],
     "require": {
-        "prettus/l5-repository": "^2.7"
+        "prettus/l5-repository": "^2.7",
+        "guzzlehttp/guzzle": "^7.3",
+        "wildbit/postmark-php": "^4.0",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

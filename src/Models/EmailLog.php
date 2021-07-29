@@ -17,7 +17,7 @@ class EmailLog extends Model
         return \Rh36\EmailApiPackage\Database\Factories\EmailLogFactory::new();
     }
 
-    public function emailTemplate()
+    public function template()
     {
         return $this->belongsTo(EmailTemplate::class);
     }
