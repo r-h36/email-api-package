@@ -3,7 +3,7 @@
 namespace Rh36\EmailApiPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Rh36\EmailApiPackage\Tests\Unit\BaseTestCase;
+use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Mailgun\Mailgun;
 use Rh36\EmailApiPackage\Services\MailgunService;
 use Rh36\EmailApiPackage\Models\EmailLog;

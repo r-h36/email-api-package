@@ -3,6 +3,7 @@
 namespace Rh36\EmailApiPackage\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 use Rh36\EmailApiPackage\Console\InstallEmailApiPackage;
 
 class EmailApiPackageServiceProvider extends ServiceProvider
@@ -34,5 +35,22 @@ class EmailApiPackageServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
         }
+
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/emailapi.php');
+        $this->registerRoutes();
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../../routes/emailapi.php');
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => 'emailapi',
+        ];
     }
 }

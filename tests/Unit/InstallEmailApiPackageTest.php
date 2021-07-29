@@ -2,9 +2,8 @@
 
 namespace Rh36\EmailApiPackage\Tests\Unit;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Rh36\EmailApiPackage\Tests\Unit\BaseTestCase;
+use Rh36\EmailApiPackage\Tests\BaseTestCase;
 
 class InstallEmailApiPackageTest extends BaseTestCase
 {

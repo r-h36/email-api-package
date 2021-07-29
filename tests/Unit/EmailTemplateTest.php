@@ -4,7 +4,7 @@ namespace Rh36\EmailApiPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Rh36\EmailApiPackage\Models\EmailTemplate;
-use Rh36\EmailApiPackage\Tests\Unit\BaseTestCase;
+use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Rh36\EmailApiPackage\Tests\User;
 
 class EmailTemplateTest extends BaseTestCase
