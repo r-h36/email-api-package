@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Rh36\EmailApiPackage\Tests\Unit\BaseTestCase;
 use Mailgun\Mailgun;
 use Rh36\EmailApiPackage\Services\MailgunService;
-use Postmark\PostmarkClient;
 use Rh36\EmailApiPackage\Models\EmailLog;
 
 class MailgunTest extends BaseTestCase

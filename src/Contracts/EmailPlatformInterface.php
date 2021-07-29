@@ -11,10 +11,10 @@ interface EmailPlatformInterface
     /**
      * compose the email body based on the choice of use_template or not
      */
-    public function composeBody(EmailLog $emaillog): array;
+    public function composeBody(EmailLog $emailLog): array;
 
     /**
      * send request via client sendAsync to handle concurrent request
      */
-    public function deliver(EmailLog $emaillog);
+    public function deliver(EmailLog $emailLog);
 }
