@@ -8,12 +8,10 @@ use Rh36\EmailApiPackage\Traits\EmailTemplateTrait;
 
 use Postmark\PostmarkClient;
 
-class Postmark implements EmailPlatformInterface
+class PostmarkService implements EmailPlatformInterface
 {
     use EmailTemplateTrait;
 
-    private $endpoint;
-    private $serverToken = null;
     private $client = null;
 
     /**
