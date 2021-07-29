@@ -5,12 +5,13 @@ namespace Rh36\EmailApiPackage\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Rh36\EmailApiPackage\Console\InstallEmailApiPackage;
+use Rh36\EmailApiPackage\Providers\EmailApiEventServiceProvider;
 
 class EmailApiPackageServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        # code...
+        $this->app->register(EmailApiEventServiceProvider::class);
     }
 
     public function boot()

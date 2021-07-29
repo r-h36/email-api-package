@@ -4,6 +4,7 @@ namespace Rh36\EmailApiPackage\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Rh36\EmailApiPackage\Events\EmailWasCreated;
 
 class EmailLog extends Model
 {
@@ -11,6 +12,10 @@ class EmailLog extends Model
 
     // Disable Laravel's mass assignment protection
     protected $guarded = [];
+
+    protected $dispatchesEvents = [
+        'created' => EmailWasCreated::class,
+    ];
 
     protected static function newFactory()
     {

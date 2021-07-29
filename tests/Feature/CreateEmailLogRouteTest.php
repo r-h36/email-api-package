@@ -8,6 +8,11 @@ use Rh36\EmailApiPackage\Models\EmailLog;
 use Rh36\EmailApiPackage\Models\EmailTemplate;
 use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Rh36\EmailApiPackage\Tests\User;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Bus;
+use Rh36\EmailApiPackage\Events\EmailWasCreated;
+use Rh36\EmailApiPackage\Jobs\SendByPostmark;
+
 use Faker;
 
 class CreateEmailLogRouteTest extends BaseTestCase
