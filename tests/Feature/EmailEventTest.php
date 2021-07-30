@@ -14,7 +14,7 @@ use Rh36\EmailApiPackage\Jobs\SendByPostmark;
 
 use Faker;
 
-class EmailCreatedEventTest extends BaseTestCase
+class EmailEventTest extends BaseTestCase
 {
     use RefreshDatabase;
 

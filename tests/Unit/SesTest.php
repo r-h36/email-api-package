@@ -15,7 +15,7 @@ class SesTest extends BaseTestCase
     /** @test */
     function an_email_can_be_delivered_by_ses()
     {
-        $SesClient = new SesClient([
+        $sesClient = new SesClient([
             'version' => 'latest',
             'region'  => env('AWS_DEFAULT_REGION'),
             'credentials' => [
@@ -23,7 +23,7 @@ class SesTest extends BaseTestCase
                 'secret' => env('AWS_SECRET_ACCESS_KEY'),
             ],
         ]);
-        $sesService = new SesService($SesClient);
+        $sesService = new SesService($sesClient);
 
         $emailLog = EmailLog::factory()->create([
             'from' => 'ray@engaging.io',
