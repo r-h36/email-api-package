@@ -13,7 +13,7 @@ class EmailLogController extends ApiBaseController
     public function __construct()
     {
         if (!auth()->check()) {
-            abort(403, 'Only authenticated users can access templates.');
+            abort(403, 'Only authenticated users can access emails.');
         }
     }
 
