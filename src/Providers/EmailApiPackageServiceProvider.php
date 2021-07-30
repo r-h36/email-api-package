@@ -24,8 +24,6 @@ class EmailApiPackageServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(EmailApiEventServiceProvider::class);
-
-        $this->mergeConfigFrom(__DIR__ . '/../../config/services.php', 'services');
     }
 
     public function boot()
@@ -55,7 +53,7 @@ class EmailApiPackageServiceProvider extends ServiceProvider
         });
 
         $this->app->bindMethod([SendByMailgun::class, 'handle'], function ($job, $app) {
-            $mailgunClient = Mailgun::create(config('services.mailgun.api_key'));
+            $mailgunClient = Mailgun::create(config('services.mailgun.secret'));
             return $job->handle($app->makeWith(MailgunService::class, ['mg' => $mailgunClient]));
         });
 

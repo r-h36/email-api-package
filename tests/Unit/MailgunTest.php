@@ -15,7 +15,7 @@ class MailgunTest extends BaseTestCase
     /** @test */
     function an_email_can_be_delivered_by_mailgun()
     {
-        $mg = Mailgun::create(env('MAILGUN_PRIVATE_API_KEY'));
+        $mg = Mailgun::create(env('MAILGUN_SECRET'));
         $mgservice = new MailgunService($mg);
 
         $emailLog = EmailLog::factory()->create([
