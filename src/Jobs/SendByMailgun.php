@@ -37,7 +37,6 @@ class SendByMailgun implements ShouldQueue
     public function failed(Throwable $exception)
     {
         // once the job failed, switch to another email service
-        SendBySes::dispatch($this->emailLog);
         dispatch(new SendBySes($this->emailLog));
     }
 }
