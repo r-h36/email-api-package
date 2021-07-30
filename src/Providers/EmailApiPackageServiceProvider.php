@@ -39,7 +39,6 @@ class EmailApiPackageServiceProvider extends ServiceProvider
                 $this->publishes([
                     __DIR__ . '/../../database/migrations/create_email_templates_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_email_templates_table.php'),
                     __DIR__ . '/../../database/migrations/create_email_logs_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_email_logs_table.php'),
-                    __DIR__ . '/../../database/migrations/create_email_api_jobs_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_email_api_jobs_table.php'),
                 ], 'migrations');
             }
         }
