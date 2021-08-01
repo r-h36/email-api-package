@@ -16,17 +16,17 @@ class InstallEmailApiPackage extends Command
     {
         $this->info('Installing EmailApiPackage...');
 
-        $this->info('Publishing configuration...');
+        $this->info('Publishing migrations...');
 
-        if (!$this->configExists('emailapi.php')) {
-            $this->publishConfiguration();
-            $this->info('Published configuration');
+        if (!$this->migrationExists('migrations/2021_07_27_140000_create_email_logs_table.php')) {
+            $this->publishMigration();
+            $this->info('Published migrations');
         } else {
-            if ($this->shouldOverwriteConfig()) {
-                $this->info('Overwriting configuration file...');
-                $this->publishConfiguration($force = true);
+            if ($this->shouldOverwriteMigration()) {
+                $this->info('Overwriting migration files...');
+                $this->publishMigration(true);
             } else {
-                $this->info('Existing configuration was not overwritten');
+                $this->info('Existing migration files were not overwritten');
             }
         }
 
@@ -34,25 +34,24 @@ class InstallEmailApiPackage extends Command
         $this->info('Installed EmailApiPackage');
     }
 
-    private function configExists($fileName)
+    private function migrationExists($fileName)
     {
-        return File::exists(config_path($fileName));
+        return File::exists(database_path($fileName));
     }
 
-
-    private function shouldOverwriteConfig()
+    private function shouldOverwriteMigration()
     {
         return $this->confirm(
-            'Config file already exists. Do you want to overwrite it?',
+            'Migration files already exist. Do you want to overwrite them?',
             false
         );
     }
 
-    private function publishConfiguration($forcePublish = false)
+    private function publishMigration($forcePublish = false)
     {
         $params = [
             '--provider' => "Rh36\EmailApiPackage\Providers\EmailApiPackageServiceProvider",
-            '--tag' => "config"
+            '--tag' => "migrations"
         ];
 
         if ($forcePublish === true) {

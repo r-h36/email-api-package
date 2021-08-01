@@ -37,8 +37,8 @@ class EmailApiPackageServiceProvider extends ServiceProvider
 
             if (!class_exists('CreateEmailTemplatesTable')) {
                 $this->publishes([
-                    __DIR__ . '/../../database/migrations/create_email_templates_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_email_templates_table.php'),
-                    __DIR__ . '/../../database/migrations/create_email_logs_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_email_logs_table.php'),
+                    __DIR__ . '/../../database/migrations/2021_07_27_140000_create_email_logs_table.php' => database_path('migrations/2021_07_27_140000_create_email_logs_table.php'),
+                    __DIR__ . '/../../database/migrations/2021_07_27_142000_create_email_templates_table.php' => database_path('migrations/2021_07_27_142000_create_email_templates_table.php'),
                 ], 'migrations');
             }
         }
