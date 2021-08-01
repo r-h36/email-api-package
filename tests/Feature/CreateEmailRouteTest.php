@@ -4,6 +4,7 @@ namespace Rh36\EmailApiPackage\Tests\Feature;
 
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutEvents;
 use Rh36\EmailApiPackage\Models\EmailLog;
 use Rh36\EmailApiPackage\Models\EmailTemplate;
 use Rh36\EmailApiPackage\Tests\BaseTestCase;
@@ -13,7 +14,7 @@ use Faker;
 
 class CreateEmailRouteTest extends BaseTestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutEvents;
 
     /** @test */
     function guests_can_not_create_emails()
@@ -24,8 +25,8 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
         $payload = [
             'from' => $from,
@@ -53,8 +54,8 @@ class CreateEmailRouteTest extends BaseTestCase
         ]);
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
         $payload = [
             'from' => $from,
@@ -99,8 +100,8 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
         $payload = [
             'from' => $from,
@@ -144,8 +145,8 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
 
         $payload1 = [
@@ -199,8 +200,8 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
 
         $payload1 = [
@@ -240,8 +241,8 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
 
         $payload1 = [
@@ -282,12 +283,12 @@ class CreateEmailRouteTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
 
         $payload = [
-            'from' => '',
+            'from' => $from,
             'to' => $to,
             'subject' => $subject,
             'use_template' => 0,

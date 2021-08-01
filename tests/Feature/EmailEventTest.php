@@ -26,8 +26,8 @@ class EmailEventTest extends BaseTestCase
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
 
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
         $payload = [
             'from' => $from,
@@ -54,8 +54,8 @@ class EmailEventTest extends BaseTestCase
 
         $user = User::factory()->create();
         $faker = Faker\Factory::create();
-        $from = $faker->email;
-        $to = $faker->email;
+        $from = env('TEST_EMAIL');
+        $to = env('TEST_EMAIL');
         $subject = implode(' ', $faker->words);
         $payload = [
             'from' => $from,
