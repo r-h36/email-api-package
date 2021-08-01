@@ -3,6 +3,7 @@
 namespace Rh36\EmailApiPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutEvents;
 use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Mailgun\Mailgun;
 use Rh36\EmailApiPackage\Services\MailgunService;
@@ -10,7 +11,7 @@ use Rh36\EmailApiPackage\Models\EmailLog;
 
 class MailgunTest extends BaseTestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutEvents;
 
     /** @test */
     function an_email_can_be_delivered_by_mailgun()
@@ -19,8 +20,8 @@ class MailgunTest extends BaseTestCase
         $mgservice = new MailgunService($mg);
 
         $emailLog = EmailLog::factory()->create([
-            'from' => 'ray@engaging.io',
-            'to' => 'ray@engaging.io',
+            'from' => env('TEST_EMAIL'),
+            'to' => env('TEST_EMAIL'),
             'cc' => null,
             'bcc' => null,
             'replyto' => null,

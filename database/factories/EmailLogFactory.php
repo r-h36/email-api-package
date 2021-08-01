@@ -30,12 +30,12 @@ class EmailLogFactory extends Factory
             'plain_content' => null,
             'subject' => implode(' ',  $this->faker->words()),
 
-            'from' => $this->faker->email(),
-            'to' => $this->faker->email(),
+            'from' => env('TEST_EMAIL'),
+            'to' => env('TEST_EMAIL'),
 
-            'cc' => $this->faker->email() . ';' . $this->faker->email(),
-            'bcc' => $this->faker->email(),
-            'replyto' => $this->faker->email(),
+            'cc' => null,
+            'bcc' => null,
+            'replyto' => null,
         ];
     }
 }

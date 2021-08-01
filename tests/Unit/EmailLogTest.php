@@ -3,13 +3,15 @@
 namespace Rh36\EmailApiPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutEvents;
 use Rh36\EmailApiPackage\Models\EmailLog;
 use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Rh36\EmailApiPackage\Tests\User;
 
 class EmailLogTest extends BaseTestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutEvents;
+
 
     /** @test */
     function an_email_log_has_a_subject()
@@ -21,15 +23,17 @@ class EmailLogTest extends BaseTestCase
     /** @test */
     function an_email_log_has_a_from_email_address()
     {
-        $emailLog = EmailLog::factory()->create(['from' => 'testfrom@outlook.com']);
-        $this->assertEquals('testfrom@outlook.com', $emailLog->from);
+        $fromEmail = env('TEST_EMAIL');
+        $emailLog = EmailLog::factory()->create(['from' => $fromEmail]);
+        $this->assertEquals($fromEmail, $emailLog->from);
     }
 
     /** @test */
     function an_email_log_has_a_to_email_address()
     {
-        $emailLog = EmailLog::factory()->create(['to' => 'testto@outlook.com']);
-        $this->assertEquals('testto@outlook.com', $emailLog->to);
+        $toEmail = env('TEST_EMAIL');
+        $emailLog = EmailLog::factory()->create(['to' => $toEmail]);
+        $this->assertEquals($toEmail, $emailLog->to);
     }
 
 

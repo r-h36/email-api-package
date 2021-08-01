@@ -3,6 +3,7 @@
 namespace Rh36\EmailApiPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutEvents;
 use Rh36\EmailApiPackage\Tests\BaseTestCase;
 use Rh36\EmailApiPackage\Services\PostmarkService;
 use Postmark\PostmarkClient;
@@ -10,7 +11,7 @@ use Rh36\EmailApiPackage\Models\EmailLog;
 
 class PostmarkTest extends BaseTestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutEvents;
 
     /** @test */
     function an_email_body_can_be_generated()
@@ -40,8 +41,8 @@ class PostmarkTest extends BaseTestCase
         $postMark = new PostmarkService($client);
 
         $emailLog = EmailLog::factory()->create([
-            'from' => 'ray@engaging.io',
-            'to' => 'ray@engaging.io',
+            'from' => env('TEST_POSTMARK_FROM'),
+            'to' => env('TEST_POSTMARK_TO'),
             'cc' => null,
             'bcc' => null,
             'replyto' => null,
